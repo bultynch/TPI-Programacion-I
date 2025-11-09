@@ -17,24 +17,24 @@ from funciones import (
 
 
 def mostrar_menu():
-    print('\n---------- MENÚ PRINCIPAL ----------')
+    print('\n---------- MENÚ PRINCIPAL ----------\n')
     print('1- Buscar país')
     print('2- Filtrar países')
     print('3- Ordenar países')
     print('4- Estadísticas')
     print('0- Salir')
-    print('------------------------------------\n')
+    print('\n------------------------------------\n')
 
 
 def menu_filtros(paises):
-    print('\n---------- FILTROS ----------')
+    print('\n---------- FILTROS ----------\n')
     print('1- Por continente')
     print('2- Por rango de población')
     print('3- Por rango de superficie')
     print('0- Volver')
-    print('-------------------------------\n')
+    print('\n-------------------------------\n')
 
-    opcion = input('Elija una opción: ')
+    opcion = input('Elija una opción: \n')
 
     if opcion == '1':
         cont = input('Ingrese continente: ')
@@ -55,14 +55,14 @@ def menu_filtros(paises):
 
 
 def menu_ordenar(paises):
-    print('\n---------- ORDENAMIENTOS ----------')
+    print('\n---------- ORDENAMIENTOS ----------\n')
     print('1- Por nombre')
     print('2- Por población')
     print('3- Por superficie')
     print('0- Volver')
-    print('-------------------------------------\n')
+    print('\n-------------------------------------\n')
 
-    opcion = input('Elija una opción: ')
+    opcion = input('Elija una opción: \n')
 
     print('\nA = Ascendente | D = Descendente')
     sentido = input('Elija el sentido (Ascenedente/Descendente): ').upper()
@@ -86,16 +86,16 @@ def menu_ordenar(paises):
 
 
 def menu_estadisticas(paises):
-    print('\n---------- ESTADÍSTICAS ----------')
+    print('\n---------- ESTADÍSTICAS ----------\n')
     print('1- País con mayor población')
     print('2- País con menor población')
     print('3- Promedio de población')
     print('4- Promedio de superficie')
     print('5- Cantidad de países por continente')
-    print('0- Volver\n')
-    print('------------------------------------\n')
+    print('0- Volver')
+    print('\n------------------------------------\n')
 
-    opcion = input('Elija una opción: ')
+    opcion = input('\nElija una opción: ')
 
     if opcion == '1':
         p = pais_mayor_poblacion(paises)
@@ -131,7 +131,7 @@ def main():
         opcion = input('Elija una opción: ')
 
         if opcion == '1':
-            nombre = input('Nombre del país a buscar: ')
+            nombre = input('\nNombre del país a buscar: ')
             resultado = buscar_pais(paises, nombre)
             mostrar_paises(resultado)
 
