@@ -34,22 +34,22 @@ def menu_filtros(paises):
     print('0- Volver')
     print('\n-------------------------------\n')
 
-    opcion = input('Elija una opción: \n')
+    opcion = input('Elija una opción: ')
 
     if opcion == '1':
-        cont = input('Ingrese continente: ')
+        cont = input('\nIngrese continente: ')
         resultado = filtrar_por_continente(paises, cont)
         mostrar_paises(resultado)
 
     elif opcion == '2':
-        minimo = int(input('Población mínima: '))
-        maximo = int(input('Población máxima: '))
+        minimo = int(input('\nPoblación mínima: '))
+        maximo = int(input('\nPoblación máxima: '))
         resultado = filtrar_por_poblacion(paises, minimo, maximo)
         mostrar_paises(resultado)
 
     elif opcion == '3':
-        minimo = int(input('Superficie mínima: '))
-        maximo = int(input('Superficie máxima: '))
+        minimo = int(input('\nSuperficie mínima: '))
+        maximo = int(input('\nSuperficie máxima: '))
         resultado = filtrar_por_superficie(paises, minimo, maximo)
         mostrar_paises(resultado)
 
@@ -62,10 +62,10 @@ def menu_ordenar(paises):
     print('0- Volver')
     print('\n-------------------------------------\n')
 
-    opcion = input('Elija una opción: \n')
+    opcion = input('Elija una opción: ')
 
     print('\nA = Ascendente | D = Descendente')
-    sentido = input('Elija el sentido (Ascenedente/Descendente): ').upper()
+    sentido = input('\nElija el sentido (Ascenedente/Descendente): ').upper()
 
     if sentido == 'D':
         descendente = True
@@ -95,7 +95,7 @@ def menu_estadisticas(paises):
     print('0- Volver')
     print('\n------------------------------------\n')
 
-    opcion = input('\nElija una opción: ')
+    opcion = input('Elija una opción: ')
 
     if opcion == '1':
         p = pais_mayor_poblacion(paises)
@@ -107,11 +107,11 @@ def menu_estadisticas(paises):
 
     elif opcion == '3':
         prom = promedio_poblacion(paises)
-        print('Promedio de población:', int(prom))
+        print('\nPromedio de población:', int(prom))
 
     elif opcion == '4':
         prom = promedio_superficie(paises)
-        print('Promedio de superficie:', int(prom))
+        print('\nPromedio de superficie:', int(prom))
 
     elif opcion == '5':
         conteo = cantidad_por_continente(paises)
