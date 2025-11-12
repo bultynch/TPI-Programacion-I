@@ -8,11 +8,11 @@
 
 # ---------- Lectura archivos csv ----------
 
-def leer_csv(ARCHIVO): # Función que obtiene la lista de diccionario de países         <---
-    paises = [] # Se inicializa la lista donde se almacenará el diccionario de cada país         <---
+def leer_csv(ARCHIVO):
+    paises = []
     cont = 0
-    with open(ARCHIVO, 'r', encoding='utf-8') as archivo: # Se abre el archivo como lectura         <---
-        lector = csv.DictReader(archivo) # Se cargan todos los valores del archivo en formato diccionario         <---
+    with open(ARCHIVO, 'r', encoding='utf-8') as archivo:
+        lector = csv.DictReader(archivo)
 
         for fila in lector: # Se recorre el archivo por línea almacenando los datos de cada país en un diccionario
             cont += 1 #Cuenta las filas que se han ingresado
@@ -36,37 +36,37 @@ def leer_csv(ARCHIVO): # Función que obtiene la lista de diccionario de países
 
 # ---------- Búsquedas ----------
 
-def buscar_pais(paises, nombre): # Función que busca un país en la lista         <---
+def buscar_pais(paises, nombre):
     nombre = nombre.lower() 
     resultado = [] # inicializa la lista para almacenar resultados
     for p in paises: # Recorre la lista de países
         if nombre in p['nombre'].lower(): 
-            resultado.append(p) #Si el nombre coincide con el valor actual se agrega a la lista         <---
+            resultado.append(p)
     return resultado
 
 
 # ---------- Filtros ----------
 
-def filtrar_por_continente(paises, continente): #Función que filtra los países por continente         <---
+def filtrar_por_continente(paises, continente):
     continente = continente.lower()
-    filtrados = [] # inicializa la lista para almacenar resultados         <---
+    filtrados = []
     for p in paises: # Recorre la lista de países
         if p['continente'].lower() == continente:
-            filtrados.append(p) #Si el continente coincide con el valor actual se agrega la línea         <---
+            filtrados.append(p)
     return filtrados
 
 
-def filtrar_por_poblacion(paises, minimo, maximo): #Función que filtra los países por población         <---
-    filtrados = [] # inicializa la lista para almacenar resultados         <---
-    for p in paises: # Recorre la lista de países         <---
+def filtrar_por_poblacion(paises, minimo, maximo):
+    filtrados = []
+    for p in paises:
         if p['poblacion'] >= minimo and p['poblacion'] <= maximo:
             filtrados.append(p) #Si el campo población está en el rango del mínimo y máximo se agrega la línea 
     return filtrados
 
 
-def filtrar_por_superficie(paises, minimo, maximo): #Función que filtra los países por superficie         <---
-    filtrados = [] # inicializa la lista para almacenar resultados         <---
-    for p in paises: # Recorre la lista de países         <---
+def filtrar_por_superficie(paises, minimo, maximo):
+    filtrados = []
+    for p in paises:
         if p['superficie'] >= minimo and p['superficie'] <= maximo: 
             filtrados.append(p) #Si el campo superficie está en el rango del mínimo y máximo se agrega la línea 
     return filtrados
@@ -95,48 +95,48 @@ def ordenar_por_superficie(paises, descendente=False): #Devuelve la lista ordena
 
 # ---------- Estadísticas ----------
 
-def pais_mayor_poblacion(paises): #Función que almacena el país con mayor población          <---
+def pais_mayor_poblacion(paises):
     mayor = paises[0] #Almacena al primer país de la lista como mayor
-    for p in paises: #Recorre todos los países          <---
-        if p['poblacion'] > mayor['poblacion']: #Compara el parámetro población         <---
-            mayor = p #Actualiza la variable         <---
-    return mayor #Retorna la línea del país con mayor población         <---
+    for p in paises:
+        if p['poblacion'] > mayor['poblacion']:
+            mayor = p
+    return mayor
 
 
-def pais_menor_poblacion(paises): #Función que almacena el país con menor población          <---
+def pais_menor_poblacion(paises):
     menor = paises[0] #Almacena al primer país de la lista como menor
-    for p in paises: #Recorre todos los países         <---
-        if p['poblacion'] < menor['poblacion']: #Compara el parámetro población         <---
-            menor = p #Actualiza la variable         <---
-    return menor #Retorna la línea del país con menor población         <---
+    for p in paises:
+        if p['poblacion'] < menor['poblacion']:
+            menor = p
+    return menor
 
 
-def promedio_poblacion(paises): #Función que retorna el promedio de la población de los países         <---
+def promedio_poblacion(paises):
     total = 0 #Inicializa el acumulador
-    for p in paises: # Recorre todos los países         <---
+    for p in paises:
         total += p['poblacion'] # Se acumula el contenido de todos los parámetros de población
-    return total / len(paises) #Se retorna el promedio (total / cantidad)         <---
+    return total / len(paises)
 
 
-def promedio_superficie(paises): #Función que retorna el promedio de la superficie de los países         <---
+def promedio_superficie(paises):
     total = 0 #Inicializa el acumulador
-    for p in paises: # Recorre todos los países         <---
+    for p in paises:
         total += p['superficie'] # Se acumula el contenido de todos los parámetros de superficie
-    return total / len(paises) #Se retorna el promedio (total / cantidad)         <---
+    return total / len(paises)
 
 
-def cantidad_por_continente(paises): #Función que retorna la cantidad de países de cada continente         <---
+def cantidad_por_continente(paises):
     conteo = {"África" : 0 , "América" : 0, "Asia" : 0, "Europa" : 0, "Oceanía" : 0} #Inicializa un diccionario para contar los países de cada continente
     #Se inicializa con los continentes en cero por si no hay países de un continente para que igualmente informe el nombre del continente en sí
-    for p in paises: #Recorre todos los países          <---
+    for p in paises:
         if p['continente'] in conteo: #Si el valor de continente del país coincide con uno del diccionario incrementa el valor en uno
             conteo[p['continente']] += 1
-    return conteo #Retorna el diccionario         <---
+    return conteo
 
 
 # ---------- Mostrar resultados ----------
 
-def mostrar_paises(lista): #Muestra la lista de países según los parámetros seleccionados         <---
+def mostrar_paises(lista):
     if len(lista) == 0: # Si la lista está vacía se informa al usuario
         print('\nNo se encontraron resultados.')
         return
@@ -157,7 +157,7 @@ def control_existencia(nombre_archivo): # Función que controla la existencia de
 def ingreso_nombre_ok(nombre): #Verifica el que el ingreso de un nuevo título tenga sea válido (no vacío)
     if nombre == "":
         return False #Si el nombre ingresado está vacío retorna false
-    return True #Si no retorna true         <---
+    return True
 
 def estandarizar_continentes(continente): #Reemplaza el valor de los continentes ingresados sin tilde para coincidir con la base de datos
     match continente:
@@ -201,7 +201,7 @@ def mostrar_menu():
     print('\n------------------------------------\n')
 
 
-def menu_filtros(paises): # Función que gestiona las opciones de filtrar los países         <---
+def menu_filtros(paises):
     opcion = ''
     while opcion != '0': #Se repite el bucle hasta que el usuario ingrese la opción de retornar
         print('\n---------- FILTROS ----------\n')
@@ -218,9 +218,9 @@ def menu_filtros(paises): # Función que gestiona las opciones de filtrar los pa
             cont = estandarizar_continentes(cont) #Se llama a la función que acepta contientes sin tildes
             if ingreso_nombre_ok(cont): # Se llama a la función que verifica los ingresos vacíos
                 resultado = filtrar_por_continente(paises, cont) #Se llama a la función que filtra por continentes y almacena en la lista de resultados
-                mostrar_paises(resultado) # Se mandan a imprimir los resultados         <---
+                mostrar_paises(resultado)
             else:
-                print("\nEl valor no puede estar vacío. Inténtelo nuevamente.") # Se informa al usuario si se ingreso un nombre vacío         <---
+                print("\nEl valor no puede estar vacío. Inténtelo nuevamente.")
             input("\nPresione ENTER para continuar...")
 
         elif opcion == '2':
@@ -231,11 +231,11 @@ def menu_filtros(paises): # Función que gestiona las opciones de filtrar los pa
                 maximo = ingreso_cantidad_ok(maximo) # Se llama a la función que verifica que el ingreso sea un entero positivo
                 if maximo != None:
                     resultado = filtrar_por_poblacion(paises, minimo, maximo) #Se llama a la función que filtra por población y almacena en la lista de resultados
-                    mostrar_paises(resultado) # Se mandan a imprimir los resultados         <---
+                    mostrar_paises(resultado)
                 else:
-                    print(f"\n{maximo} es un valor incorrecto, inténtelo nuevamente") #Se informa al usuario si se ingreso un valor que no es un entero positivo         <---
+                    print(f"\n{maximo} es un valor incorrecto, inténtelo nuevamente")
             else:
-                print(f"\n{minimo} es un valor incorrecto, inténtelo nuevamente") #Se informa al usuario si se ingreso un valor que no es un entero positivo         <---
+                print(f"\n{minimo} es un valor incorrecto, inténtelo nuevamente")
             input("\nPresione ENTER para continuar...")
 
 
@@ -247,11 +247,11 @@ def menu_filtros(paises): # Función que gestiona las opciones de filtrar los pa
                 maximo = ingreso_cantidad_ok(maximo) # Se llama a la función que verifica que el ingreso sea un entero positivo
                 if maximo != None:
                     resultado = filtrar_por_superficie(paises, minimo, maximo) #Se llama a la función que filtra por superficie y almacena en la lista de resultados
-                    mostrar_paises(resultado) # Se mandan a imprimir los resultados         <---
+                    mostrar_paises(resultado)
                 else:
-                        print(f"\n{maximo} es un valor incorrecto, inténtelo nuevamente") #Se informa al usuario si se ingreso un valor que no es un entero positivo         <---
+                        print(f"\n{maximo} es un valor incorrecto, inténtelo nuevamente")
             else:
-                print(f"\n{minimo} es un valor incorrecto, inténtelo nuevamente") #Se informa al usuario si se ingreso un valor que no es un entero positivo         <---
+                print(f"\n{minimo} es un valor incorrecto, inténtelo nuevamente")
             input("\nPresione ENTER para continuar...")
 
         elif opcion == '0':
@@ -263,7 +263,7 @@ def menu_filtros(paises): # Función que gestiona las opciones de filtrar los pa
         
 
 
-def menu_ordenar(paises): # Función que gestiona las opciones de ordenar los países         <---
+def menu_ordenar(paises):
     opcion = ''
     while opcion != '0': #Se repite el bucle hasta que el usuario ingrese la opción de retornar
         print('\n---------- ORDENAMIENTOS ----------\n')
@@ -279,21 +279,21 @@ def menu_ordenar(paises): # Función que gestiona las opciones de ordenar los pa
             descendente = ingresar_sentido() #Se llama a la función que informa el sentido seleccionado
             if descendente != None: #Si el ingreso no fue válido no se prosigue con el orden
                 ordenados = ordenar_por_nombre(paises, descendente) #Se llama a la función que ordena por nombre del país y almacena en la lista de resultados
-                mostrar_paises(ordenados) # Se mandan a imprimir los resultados         <---
+                mostrar_paises(ordenados)
             input("\nPresione ENTER para continuar...")
 
         elif opcion == '2':
             descendente = ingresar_sentido() #Se llama a la función que informa el sentido seleccionado
             if descendente != None: #Si el ingreso no fue válido no se prosigue con el orden
                 ordenados = ordenar_por_poblacion(paises, descendente) #Se llama a la función que ordena por cantidad de población y almacena en la lista de resultados
-                mostrar_paises(ordenados) # Se mandan a imprimir los resultados         <---
+                mostrar_paises(ordenados)
             input("\nPresione ENTER para continuar...")
 
         elif opcion == '3':
             descendente = ingresar_sentido() #Se llama a la función que informa el sentido seleccionado
             if descendente != None: #Si el ingreso no fue válido no se prosigue con el orden
                 ordenados = ordenar_por_superficie(paises, descendente) #Se llama a la función que ordena por superficie y almacena en la lista de resultados
-                mostrar_paises(ordenados) # Se mandan a imprimir los resultados         <---
+                mostrar_paises(ordenados)
             input("\nPresione ENTER para continuar...")
         
         elif opcion == '0':
@@ -304,7 +304,7 @@ def menu_ordenar(paises): # Función que gestiona las opciones de ordenar los pa
             input("\nPresione ENTER para continuar...")
 
 
-def menu_estadisticas(paises): # Función que gestiona las opciones de generar informes         <---
+def menu_estadisticas(paises):
     opcion = ''
     while opcion != '0': #Se repite el bucle hasta que el usuario ingrese la opción de retornar
         print('\n---------- ESTADÍSTICAS ----------\n')
@@ -320,12 +320,12 @@ def menu_estadisticas(paises): # Función que gestiona las opciones de generar i
 
         if opcion == '1':
             p = pais_mayor_poblacion(paises) # Se llama a la función que informa el país con mayor población
-            mostrar_paises([p]) # Se mandan a imprimir los resultados         <---
+            mostrar_paises([p])
             input("\nPresione ENTER para continuar...")
 
         elif opcion == '2':
             p = pais_menor_poblacion(paises) # Se llama a la función que informa el país con menor población
-            mostrar_paises([p]) # Se mandan a imprimir los resultados         <---
+            mostrar_paises([p])
             input("\nPresione ENTER para continuar...")
 
         elif opcion == '3':
@@ -353,7 +353,7 @@ def menu_estadisticas(paises): # Función que gestiona las opciones de generar i
             input("\nPresione ENTER para continuar...")
 
 
-def main(): # Función que gestiona el programa y menú principal         <---
+def main():
     ARCHIVO = 'paises.csv' #Se carga la ruta del archivo en una variable
     if control_existencia(ARCHIVO): #Se llama a la función que verifica la existencia del archivo de base de datos
         
@@ -369,7 +369,7 @@ def main(): # Función que gestiona el programa y menú principal         <---
                 nombre = input('\nNombre del país a buscar: ').strip()
                 if ingreso_nombre_ok(nombre): # Se llama a la función que verifica los ingresos vacíos
                     resultado = buscar_pais(paises, nombre) # Se llama a la función que retorna los datos de un país
-                    mostrar_paises(resultado) # Se mandan a imprimir los resultados         <---
+                    mostrar_paises(resultado)
                 else:         
                     print("\nEl valor no puede estar vacío. Inténtelo nuevamente.") # Se informa al usuario si se ingreso un nombre vacío
                 input("\nPresione ENTER para continuar...")
