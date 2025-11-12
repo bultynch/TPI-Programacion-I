@@ -1,14 +1,20 @@
 # Trabajo Práctico Integrador – Programación 1
 
 Integrantes:
-Arnaiz Rodrigo Martín - arnaizrodrigomartin@gmail.com
-Bultynch Francisco Jesús - bultynch98@gmail.com
+- Arnaiz Rodrigo Martín - arnaizrodrigomartin@gmail.com
+- Bultynch Francisco Jesús - bultynch98@gmail.com
 
 ##  Descripción del programa
 
 Este programa permite gestionar un conjunto de datos sobre países utilizando: listas, diccionarios, funciones, estructuras condicionales y repetitivas.  
 
-El sistema carga la información desde un archivo CSV, permite realizar búsquedas, filtros, ordenamientos y genera diversas estadísticas a partir del dataset.
+El sistema carga la información desde un archivo CSV y permite:
+
+- Buscar países.
+- Filtrar por diferentes criterios.
+- Ordenar los registros.
+- Generar estadísticas.
+- Mostrar los resultados formateados.
 
 El objetivo del proyecto es aplicar las bases de la programación estructurada, modularizar correctamente las funciones y trabajar con archivos externos.
 
@@ -36,7 +42,7 @@ El objetivo del proyecto es aplicar las bases de la programación estructurada, 
 
 #### Dataset
 
-El archivo paises.csv contiene los siguientes campos:
+El archivo 'paises.csv' contiene los siguientes campos:
 
 - 'nombre'
 - 'poblacion'
@@ -52,16 +58,21 @@ Alemania,83150000,357022,Europa
 Egipto,110000000,1010408,África
 Australia,25690000,7700000,Oceanía
 
--------------
+El programa incluye validaciones para:
+
+- nombres vacíos,
+- continentes incorrectos,
+- números inválidos,
+- filas mal cargadas en el CSV.
 
 ## Instrucciones de uso
 
-1. Contar con Pyhton 3.x instalado.
-2. Descargar todos los archivos del repositorio.
-3. Ejecutar en la consola.
-4. Navegar por el menú utlizando los números para seleccionar las opciones.
+1. Instalar Python 3.x.  
+2. Descargar todos los archivos del repositorio.  
+3. Asegurarse de que 'paises.csv' esté en la misma carpeta que el programa.  
+4. Ejecutar desde la consola.
+5. Navegar usando los números del menú principal.
 
-----------
 
 ## Ejemplos de entrada y salida.
 
@@ -101,8 +112,19 @@ Australia,25690000,7700000,Oceanía
 
 ## Participacion de los integrantes
 
-Ambos integrantes participaron en:
-- Diseño del programa.
-- Elaboración de funciones.
-- Pruebas y depuración.
-- Grabación del video explicativo.
+Ambos integrantes colaboraron en:
+
+- Diseño general del programa.
+- Implementación y modularización de funciones.
+- Validación y depuración del código.
+- Preparación del video explicativo del proyecto.
+
+## Notas finales
+
+El programa fue desarrollado siguiendo los lineamientos de Programación I aplicando buenas prácticas en:
+
+- Modularización.
+- Manejo de archivos.
+- Validación de datos.
+- Separación por responsabilidades.
+- Estructuración del menú interactivo.
